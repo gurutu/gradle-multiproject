@@ -1,0 +1,8 @@
+[versions]
+spring-boot = "2.9.0"
+kotlin = "2.2.21"
+
+[plugins]
+versions = { id = "com.github.ben-manes.versions", version = "0.45.0" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }

@@ -1,0 +1,13 @@
+//implementation("")
+//        implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+ext.libs = [
+        "guava":"com.google.guava:guava:33.4.8-jre",
+       "spring-boot-starter":"org.springframework.boot:spring-boot-starter",
+        "kotlin-reflect":"org.jetbrains.kotlin:kotlin-reflect"
+]
+ext.libsTest = [
+       "spring-boot-starter-test":"org.springframework.boot:spring-boot-starter-test",
+        "kotlin-test-junit5":"org.jetbrains.kotlin:kotlin-test-junit5",
+        "junit-platform-launcher":"org.junit.platform:junit-platform-launcher"
+]
