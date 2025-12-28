@@ -5,7 +5,8 @@ plugins {
     alias(libs.plugins.kotlin.spring)
    // kotlin("jvm") version "2.2.21"
    // kotlin("plugin.spring") version "2.2.21"
-    id("org.springframework.boot") version "4.0.1"
+    alias(libs.plugins.spring.boot)
+//    id("org.springframework.boot") version "4.0.1"
     id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -16,6 +17,36 @@ subprojects {
         plugin("org.springframework.boot")
         plugin("io.spring.dependency-management")
     }
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+    dependencies {
+        // implementation(libs["spring-boot-starter"] as String)
+        //  implementation(libs["kotlin-reflect"] as String)
+        //  testImplementation(libsTest["spring-boot-starter-test"] as String)
+        //  testImplementation(libsTest["kotlin-test-junit5"] as String)
+        //  testImplementation(libsTest["junit-platform-launcher"] as String)
+         implementation(rootProject.libs.spring.boot.starter)
+        implementation(rootProject.libs.kotlin.reflect)
+        testImplementation(rootProject.libs.spring.boot.starter.test)
+        testImplementation(rootProject.libs.kotlin.test.junit5)
+        testRuntimeOnly(rootProject.libs.junit.platform.launcher)
+         //  implementation("org.springframework.boot:spring-boot-starter")
+         // implementation("org.jetbrains.kotlin:kotlin-reflect")
+         //  testImplementation("org.springframework.boot:spring-boot-starter-test")
+         // testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+          // testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+
+    }
+
+    kotlin {
+        compilerOptions {
+            freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
+        }
+    }
 
 }
 allprojects {
@@ -25,11 +56,11 @@ allprojects {
         }
     }
     //apply(from ="${rootProject.projectDir}/dependencies.gradle")
-    java {
-        toolchain {
-            languageVersion = JavaLanguageVersion.of(17)
-        }
-    }
+//    java {
+//        toolchain {
+//            languageVersion = JavaLanguageVersion.of(17)
+//        }
+//    }
 
     repositories {
         mavenCentral()
@@ -38,24 +69,20 @@ allprojects {
 //    val libsTest = project.ext["libsTest"] as Map<*, *>
 //    val libs = extensions.getByName("libs")
 //println(libs)
-    dependencies {
+    //dependencies {
 //        implementation(libs["spring-boot-starter"] as String)
 //        implementation(libs["kotlin-reflect"] as String)
 //        testImplementation(libsTest["spring-boot-starter-test"] as String)
 //        testImplementation(libsTest["kotlin-test-junit5"] as String)
 //        testImplementation(libsTest["junit-platform-launcher"] as String)
-        implementation("org.springframework.boot:spring-boot-starter")
-        implementation("org.jetbrains.kotlin:kotlin-reflect")
-        testImplementation("org.springframework.boot:spring-boot-starter-test")
-        testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-        testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    }
+     //   implementation("org.springframework.boot:spring-boot-starter")
+      //  implementation("org.jetbrains.kotlin:kotlin-reflect")
+     //   testImplementation("org.springframework.boot:spring-boot-starter-test")
+      //  testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+     //   testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+   // }
 
-    kotlin {
-        compilerOptions {
-            freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
-        }
-    }
+
 
     tasks.withType<Test> {
         useJUnitPlatform()

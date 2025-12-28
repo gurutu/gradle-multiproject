@@ -1,8 +1,25 @@
 [versions]
-spring-boot = "2.9.0"
+springboot = "4.0.1"
 kotlin = "2.2.21"
+guava = "33.4.8-jre"
+
 
 [plugins]
 versions = { id = "com.github.ben-manes.versions", version = "0.45.0" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+spring-boot = { id = "org.springframework.boot", version.ref = "springboot" }
+
+
+[libraries]
+#========= guava ============
+guava-lib= { module = "com.google.guava:guava", version.ref = "guava" }
+#========= spring ===========
+spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter"}
+#========= kotlin =========
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect"}
+
+#========== Testing ========
+spring-boot-starter-test ={ module ="org.springframework.boot:spring-boot-starter-test"}
+kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher"}

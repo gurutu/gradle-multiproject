@@ -7,7 +7,7 @@ plugins {
 dependencies {
     // https://mvnrepository.com/artifact/com.google.guava/guava
 //    api(libs["guava"] as String)
-    api("com.google.guava:guava:33.4.8-jre")
+    api(libs.guava.lib)
 }
 
 subprojects {
